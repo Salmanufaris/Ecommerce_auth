@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/views/login.dart';
+import 'package:flutter_application_1/views/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
@@ -45,15 +47,17 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: TextFormField(
                   onTap: () {
-                    loging(context);
+                    // loging(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignupScreen()));
                   },
-                  textAlign: TextAlign.center, // Align the text in the center
+                  textAlign: TextAlign.center,
                   decoration: InputDecoration(
-                    hintText: "Login",
-                    hintStyle: const TextStyle(color: Colors.white),
-                    fillColor: const Color.fromARGB(
-                        255, 57, 16, 220), // Set the background color to blue
-                    filled: true,
+                    hintText: "Sign Up",
+                    hintStyle: const TextStyle(
+                        color: Color.fromARGB(255, 57, 16, 220)),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
@@ -64,13 +68,18 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: TextFormField(
                   onTap: () {
-                    loging(context);
+                    // loging(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()));
                   },
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
-                    hintText: "Sign Up",
-                    hintStyle: const TextStyle(
-                        color: Color.fromARGB(255, 57, 16, 220)),
+                    hintText: "Login",
+                    hintStyle: const TextStyle(color: Colors.white),
+                    fillColor: const Color.fromARGB(255, 57, 16, 220),
+                    filled: true,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
@@ -114,50 +123,50 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Future loging(BuildContext context) async {
-    showDialog(
-      barrierColor: Colors.grey,
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            'Login',
-            style: TextStyle(
-                color: Colors.black, fontSize: 30, fontWeight: FontWeight.w700),
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextFormField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  hintText: 'Username',
-                ),
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    hintText: 'Password',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20))),
-              ),
-            ],
-          ),
-          actions: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                'Login',
-                style: TextStyle(color: Colors.green),
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
+  // void loging(BuildContext context) {
+  //   showDialog(
+  //     barrierColor: Colors.grey,
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: const Text(
+  //           'Login',
+  //           style: TextStyle(
+  //               color: Colors.black, fontSize: 30, fontWeight: FontWeight.w700),
+  //         ),
+  //         content: Column(
+  //           mainAxisSize: MainAxisSize.min,
+  //           children: [
+  //             TextFormField(
+  //               decoration: InputDecoration(
+  //                 border: OutlineInputBorder(
+  //                     borderRadius: BorderRadius.circular(20)),
+  //                 hintText: 'Username',
+  //               ),
+  //             ),
+  //             const SizedBox(height: 20),
+  //             TextFormField(
+  //               obscureText: true,
+  //               decoration: InputDecoration(
+  //                   hintText: 'Password',
+  //                   border: OutlineInputBorder(
+  //                       borderRadius: BorderRadius.circular(20))),
+  //             ),
+  //           ],
+  //         ),
+  //         actions: [
+  //           ElevatedButton(
+  //             onPressed: () {
+  //               Navigator.of(context).pop();
+  //             },
+  //             child: const Text(
+  //               'Login',
+  //               style: TextStyle(color: Colors.green),
+  //             ),
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 }
