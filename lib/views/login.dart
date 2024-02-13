@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +33,7 @@ class LoginScreen extends StatelessWidget {
                   height: 10,
                 ),
                 TextFormField(
+                  controller: emailController,
                   decoration: InputDecoration(
                       hintText: "Email",
                       border: OutlineInputBorder(
@@ -36,18 +41,19 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
+                  controller: passwordController,
                   decoration: InputDecoration(
                       hintText: "Password",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20))),
                 ),
                 const SizedBox(height: 10),
-                TextFormField(
-                  decoration: InputDecoration(
-                      hintText: "Confirm password",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20))),
-                ),
+                // TextFormField(
+                //   decoration: InputDecoration(
+                //       hintText: "Confirm password",
+                //       border: OutlineInputBorder(
+                //           borderRadius: BorderRadius.circular(20))),
+                // ),
                 MaterialButton(
                     textColor: Colors.white,
                     child: const Text("Sign up"),

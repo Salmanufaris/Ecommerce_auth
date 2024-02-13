@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SignupScreen()));
+                            builder: (context) => SignupScreen()));
                   },
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
@@ -69,10 +69,8 @@ class HomeScreen extends StatelessWidget {
                 child: TextFormField(
                   onTap: () {
                     // loging(context);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginScreen()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
                   },
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
