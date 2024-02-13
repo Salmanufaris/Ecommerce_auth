@@ -9,14 +9,14 @@ class SignupScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
                   height: 230,
                 ),
-                Row(children: [
+                const Row(children: [
                   Text(
                     "Sign",
                     style: TextStyle(
@@ -35,7 +35,7 @@ class SignupScreen extends StatelessWidget {
                         fontWeight: FontWeight.w800),
                   ),
                 ]),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
@@ -60,7 +60,7 @@ class SignupScreen extends StatelessWidget {
                 ),
                 MaterialButton(
                     textColor: Colors.white,
-                    child: Text("Login"),
+                    child: const Text("Login"),
                     color: Colors.black,
                     onPressed: () {})
               ],

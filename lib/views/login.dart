@@ -9,14 +9,14 @@ class LoginScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
                   height: 230,
                 ),
-                Row(children: [
+                const Row(children: [
                   Text(
                     "Login",
                     style: TextStyle(
@@ -25,7 +25,7 @@ class LoginScreen extends StatelessWidget {
                         fontWeight: FontWeight.w800),
                   ),
                 ]),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
@@ -50,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 MaterialButton(
                     textColor: Colors.white,
-                    child: Text("Sign up"),
+                    child: const Text("Sign up"),
                     color: Colors.black,
                     onPressed: () {})
               ],
