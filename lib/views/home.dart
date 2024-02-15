@@ -1,25 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/controller/home_controller.dart';
 import 'package:flutter_application_1/views/login.dart';
 import 'package:flutter_application_1/views/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final pro = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          TextButton(
+              onPressed: () {
+                pro.signOutWithEmail();
+                pro.googleSignOut();
+              },
+              child: Text("signout"))
+        ],
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
               const SizedBox(
-                height: 29,
+                height: 10,
               ),
               Padding(
-                padding: const EdgeInsets.all(30),
+                padding: const EdgeInsets.all(1),
                 child: SizedBox(
                   height: 300,
                   width: 300,
@@ -90,28 +103,41 @@ class HomeScreen extends StatelessWidget {
               Row(
                 children: [
                   const SizedBox(width: 130),
-                  SizedBox(
-                    height: 40,
-                    width: 40,
-                    child: Image.asset("assets/git1-removebg-preview.png"
-                        // fit: BoxFit.cover,
-                        // filterQuality: FilterQuality.high,
-                        ),
-                  ),
-                  const SizedBox(width: 10),
-                  SizedBox(
-                    height: 30,
-                    width: 30,
-                    child: Image.asset("assets/google1-removebg-preview.png"
-                        // fit: BoxFit.cover,
-                        // filterQuality: FilterQuality.high,
-                        ),
-                  ),
-                  const SizedBox(width: 10),
-                  SizedBox(
+                  GestureDetector(
+                    onTap: () {
+                      pro.gitHubSignIn(context);
+                    },
+                    child: SizedBox(
                       height: 40,
                       width: 40,
-                      child: Image.asset("assets/phone1-removebg-preview.png"))
+                      child: Image.asset("assets/git1-removebg-preview.png"),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  GestureDetector(
+                    onTap: () {
+                      pro.googleSignIn();
+                    },
+                    child: SizedBox(
+                      height: 30,
+                      width: 30,
+                      child: Image.asset("assets/google1-removebg-preview.png"
+                          // fit: BoxFit.cover,
+                          // filterQuality: FilterQuality.high,
+                          ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  GestureDetector(
+                    onTap: () {
+                      pro.getOtp(pro.phoneController.text);
+                    },
+                    child: SizedBox(
+                        height: 40,
+                        width: 40,
+                        child:
+                            Image.asset("assets/phone1-removebg-preview.png")),
+                  )
                 ],
               )
             ],
@@ -120,51 +146,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
-  // void loging(BuildContext context) {
-  //   showDialog(
-  //     barrierColor: Colors.grey,
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: const Text(
-  //           'Login',
-  //           style: TextStyle(
-  //               color: Colors.black, fontSize: 30, fontWeight: FontWeight.w700),
-  //         ),
-  //         content: Column(
-  //           mainAxisSize: MainAxisSize.min,
-  //           children: [
-  //             TextFormField(
-  //               decoration: InputDecoration(
-  //                 border: OutlineInputBorder(
-  //                     borderRadius: BorderRadius.circular(20)),
-  //                 hintText: 'Username',
-  //               ),
-  //             ),
-  //             const SizedBox(height: 20),
-  //             TextFormField(
-  //               obscureText: true,
-  //               decoration: InputDecoration(
-  //                   hintText: 'Password',
-  //                   border: OutlineInputBorder(
-  //                       borderRadius: BorderRadius.circular(20))),
-  //             ),
-  //           ],
-  //         ),
-  //         actions: [
-  //           ElevatedButton(
-  //             onPressed: () {
-  //               Navigator.of(context).pop();
-  //             },
-  //             child: const Text(
-  //               'Login',
-  //               style: TextStyle(color: Colors.green),
-  //             ),
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
 }

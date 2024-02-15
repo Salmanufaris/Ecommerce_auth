@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/controller/home_controller.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -9,6 +11,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pro = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -48,17 +51,15 @@ class LoginScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20))),
                 ),
                 const SizedBox(height: 10),
-                // TextFormField(
-                //   decoration: InputDecoration(
-                //       hintText: "Confirm password",
-                //       border: OutlineInputBorder(
-                //           borderRadius: BorderRadius.circular(20))),
-                // ),
                 MaterialButton(
                     textColor: Colors.white,
                     child: const Text("Sign up"),
                     color: Colors.black,
-                    onPressed: () {})
+                    onPressed: () {
+                      pro.signInWithEmail(pro.emailController.text,
+                          pro.passwordController.text);
+                      Navigator.pop(context);
+                    })
               ],
             ),
           ),

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/controller/home_controller.dart';
+import 'package:provider/provider.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final pro = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -43,7 +42,7 @@ class SignupScreen extends StatelessWidget {
                   height: 10,
                 ),
                 TextFormField(
-                  controller: emailController,
+                  controller: pro.emailController,
                   decoration: InputDecoration(
                       hintText: "Email",
                       border: OutlineInputBorder(
@@ -51,25 +50,22 @@ class SignupScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
-                  controller: passwordController,
+                  controller: pro.passwordController,
                   decoration: InputDecoration(
                       hintText: "Password",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20))),
                 ),
                 const SizedBox(height: 10),
-                TextFormField(
-                  controller: confirmPasswordController,
-                  decoration: InputDecoration(
-                      hintText: "Confirm password",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20))),
-                ),
                 MaterialButton(
                     textColor: Colors.white,
                     child: const Text("Login"),
                     color: Colors.black,
-                    onPressed: () {})
+                    onPressed: () {
+                      pro.signUpWithEmail(pro.emailController.text,
+                          pro.passwordController.text);
+                      Navigator.pop(context);
+                    })
               ],
             ),
           ),
