@@ -1,148 +1,179 @@
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/controller/home_controller.dart';
-import 'package:flutter_application_1/views/login.dart';
-import 'package:flutter_application_1/views/signup.dart';
+import 'package:flutter_application_1/controller/homepage_provider.dart';
+import 'package:flutter_application_1/helpers/helpers.dart';
+import 'package:flutter_application_1/service/authentication_services.dart';
+import 'package:flutter_application_1/views/drawer.dart';
+import 'package:flutter_application_1/widgets/catoegry_list.dart';
+import 'package:flutter_application_1/widgets/furniture_grid.dart';
+import 'package:flutter_application_1/widgets/shoe.grid.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
+
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  AuthService auth = AuthService();
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<HomeProvider>(context, listen: false).getCurrentUser();
+  }
+
+  final List<String> images = [
+    'assets/offers.jpg',
+    'assets/offer2.jpg',
+    'assets/shoeoffers.jpg',
+    'assets/chocolates.jpg',
+    'assets/lipsticks.jpg',
+    'assets/plants.jpg',
+    'assets/bags (1).jpg',
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final pro = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 24, 30, 41),
       appBar: AppBar(
-        actions: [
-          TextButton(
-              onPressed: () {
-                pro.signOutWithEmail();
-                pro.googleSignOut();
-              },
-              child: Text("signout"))
-        ],
+        backgroundColor: Color.fromARGB(255, 24, 30, 41),
       ),
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(1),
-                child: SizedBox(
-                  height: 300,
-                  width: 300,
-                  child: Lottie.asset("assets/Animation - 1707713244831.json",
-                      fit: BoxFit.cover),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Hello",
-                style: GoogleFonts.adventPro(
-                    fontSize: 25, fontWeight: FontWeight.w900),
-              ),
-              Text(
-                "Welcome To Ecommerce App.",
-                style: GoogleFonts.alegreyaSc(
-                    fontSize: 20, fontWeight: FontWeight.w200),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: TextFormField(
-                  onTap: () {
-                    // loging(context);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SignupScreen()));
-                  },
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(
-                    hintText: "Sign Up",
-                    hintStyle: const TextStyle(
-                        color: Color.fromARGB(255, 57, 16, 220)),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: TextFormField(
-                  onTap: () {
-                    // loging(context);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
-                  },
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(
-                    hintText: "Login",
-                    hintStyle: const TextStyle(color: Colors.white),
-                    fillColor: const Color.fromARGB(255, 57, 16, 220),
-                    filled: true,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 35,
-              ),
-              Row(
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10.0, bottom: 15),
+              child: Column(
                 children: [
-                  const SizedBox(width: 130),
-                  GestureDetector(
-                    onTap: () {
-                      pro.gitHubSignIn(context);
-                    },
-                    child: SizedBox(
-                      height: 40,
-                      width: 40,
-                      child: Image.asset("assets/git1-removebg-preview.png"),
-                    ),
+                  Row(
+                    children: [
+                      Text('Hello..',
+                          style: GoogleFonts.montserrat(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white)),
+                      Image.asset(
+                        'assets/handwave.jpg',
+                        height: 20,
+                      ),
+                      spacingWidth(10),
+                      Text(Provider.of<HomeProvider>(context).currentusername,
+                          style: GoogleFonts.montserrat(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white)),
+                    ],
                   ),
-                  const SizedBox(width: 10),
-                  GestureDetector(
-                    onTap: () {
-                      pro.googleSignIn();
-                    },
-                    child: SizedBox(
-                      height: 30,
-                      width: 30,
-                      child: Image.asset("assets/google1-removebg-preview.png"
-                          // fit: BoxFit.cover,
-                          // filterQuality: FilterQuality.high,
-                          ),
-                    ),
+                  Row(
+                    children: [
+                      Text('Start',
+                          style: GoogleFonts.montserrat(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white)),
+                      Icon(
+                        Icons.arrow_right,
+                        color: Colors.green,
+                      ),
+                      spacingWidth(10),
+                      Text('Shopping',
+                          style: GoogleFonts.montserrat(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.amber)),
+                    ],
                   ),
-                  const SizedBox(width: 10),
-                  GestureDetector(
-                    onTap: () {
-                      pro.getOtp(pro.phoneController.text);
-                    },
-                    child: SizedBox(
-                        height: 40,
-                        width: 40,
-                        child:
-                            Image.asset("assets/phone1-removebg-preview.png")),
-                  )
                 ],
-              )
-            ],
+              ),
+            ),
           ),
-        ),
+          SliverToBoxAdapter(
+            child: CarouselSlider(
+              options: CarouselOptions(
+                height: 200.0,
+                autoPlay: true,
+                aspectRatio: 16 / 9,
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enableInfiniteScroll: true,
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                viewportFraction: 0.8,
+              ),
+              items: images.map((String imageUrl) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Color.fromARGB(255, 29, 35, 46),
+                              image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: AssetImage(imageUrl))),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }).toList(),
+            ),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(vertical: 10.0),
+          ),
+          Categories(),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text('Choose your',
+                          style: GoogleFonts.montserrat(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white)),
+                      spacingWidth(10),
+                      Text('Products',
+                          style: GoogleFonts.montserrat(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.amber)),
+                    ],
+                  ),
+                  Text('Sports',
+                      style: GoogleFonts.montserrat(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white)),
+                ],
+              ),
+            ),
+          ),
+          ShoeItems(),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Text('Furniture',
+                  style: GoogleFonts.montserrat(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white)),
+            ),
+          ),
+          FurnitureItems(),
+        ],
       ),
     );
   }
