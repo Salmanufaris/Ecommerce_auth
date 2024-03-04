@@ -31,7 +31,8 @@ class _LoginPageState extends State<LoginPage> {
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: const Color.fromARGB(255, 24, 30, 41),
+      backgroundColor: Colors.white,
+      // backgroundColor: const Color.fromARGB(255, 24, 30, 41),
       body: Stack(
         children: [
           ClipPath(
@@ -39,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
                 height: height * 1.5,
                 width: double.infinity,
-                color: const Color.fromARGB(255, 33, 41, 56)),
+                color: Colors.white),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
@@ -50,22 +51,21 @@ class _LoginPageState extends State<LoginPage> {
                   const Center(
                       child: Icon(
                     Iconsax.security_safe,
-                    color: Colors.white,
+                    color: Colors.black,
                     size: 60,
                   )),
                   spacingHeight(10),
                   Text(
                     'Welcome',
                     style: GoogleFonts.ubuntu(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 30,
                         fontWeight: FontWeight.w500),
                   ),
                   Text(
                     'Please enter your e-mail and password to Login',
                     style: GoogleFonts.montserrat(
-                        color: const Color.fromARGB(255, 190, 189, 189),
-                        fontSize: 12),
+                        color: Colors.black, fontSize: 12),
                   ),
                   spacingHeight(20),
                   textFormField(controller: emailController, text: 'Email'),
@@ -78,8 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         'Forgot password?',
                         style: GoogleFonts.montserrat(
-                            color: const Color.fromARGB(255, 190, 189, 189),
-                            fontSize: 12),
+                            color: Colors.black, fontSize: 12),
                       )),
                   spacingHeight(15),
                   InkWell(
@@ -183,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                           // ignore: prefer_const_constructors
                           child: Icon(
                             Iconsax.mobile,
-                            color: Colors.white,
+                            color: Colors.black,
                             size: 35,
                           ),
                         ),

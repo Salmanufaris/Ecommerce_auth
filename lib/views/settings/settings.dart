@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/helpers/helpers.dart';
 import 'package:flutter_application_1/service/authentication_services.dart';
-import 'package:flutter_application_1/views/settings/about.dart';
-import 'package:flutter_application_1/views/settings/terms.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 class Settings extends StatelessWidget {
@@ -11,13 +10,13 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 24, 30, 41),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 24, 30, 41),
+        backgroundColor: Colors.white,
         title: Text(
           'Settings',
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 30),
         ),
       ),
       body: Padding(
@@ -25,12 +24,15 @@ class Settings extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(
+              height: 20,
+            ),
             Container(
               width: double.infinity,
               height: 150,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 29, 36, 49)),
+                  color: Colors.grey[300]),
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Row(
@@ -44,29 +46,29 @@ class Settings extends StatelessWidget {
                           Icon(
                         Icons.person_outline_rounded,
                         size: 60,
-                        color: Colors.grey,
+                        color: Colors.black,
                       ),
                     ),
                     Container(
                       height: 100,
-                      width: 240,
+                      width: 200,
                       child: Column(
                         children: [
                           Text(
                             auth.auth.currentUser!.displayName ?? '',
                             style: GoogleFonts.montserrat(
-                                color: Colors.white, fontSize: 17),
+                                color: Colors.black, fontSize: 17),
                           ),
                           spacingHeight(10),
                           Text(auth.auth.currentUser!.email!,
                               style: GoogleFonts.montserrat(
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600)),
                           spacingHeight(10),
                           Text(auth.auth.currentUser!.uid,
                               style: GoogleFonts.montserrat(
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   fontSize: 10,
                                   fontWeight: FontWeight.w600)),
                         ],
@@ -85,35 +87,18 @@ class Settings extends StatelessWidget {
             SizedBox(
               height: 60,
             ),
-            GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => About(),
-                      ));
-                },
-                child: containers(text: 'About Us')),
+
             SizedBox(
               height: 20,
             ),
             GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => TermsPage(),
-                      ));
-                },
-                child: containers(text: 'Terms     ')),
-            SizedBox(
-              height: 20,
+              onTap: () {
+                AuthService().signOut();
+              },
+              child: containers(
+                text: 'Logout ',
+              ),
             ),
-            GestureDetector(
-                onTap: () {
-                  AuthService().signOut();
-                },
-                child: containers(text: 'Logout ')),
 
             // Expanded(child: WishListPage()),
           ],
@@ -126,21 +111,21 @@ class Settings extends StatelessWidget {
     return Container(
       height: 60,
       width: 400,
-      color: Color.fromARGB(255, 188, 160, 78),
-      // decoration: BoxDecoration(border: Border.all()),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10), color: Colors.grey[300]),
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10),
             child: Text(
               text,
-              style: TextStyle(fontSize: 17),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 17,
+                color: Colors.black,
+              ),
             ),
           ),
-          SizedBox(
-            width: 240,
-          ),
-          IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))
         ],
       ),
     );

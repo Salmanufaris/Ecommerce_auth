@@ -32,7 +32,7 @@ class _MyWidgetState extends State<BottomNavigation> {
       body: _pages[bottomProvider.currentIndex],
       bottomNavigationBar: Container(
         child: NavigationBar(
-          backgroundColor: Color.fromARGB(255, 18, 23, 31),
+          backgroundColor: Colors.white,
           selectedIndex: bottomProvider.currentIndex,
           onDestinationSelected: (index) {
             bottomProvider.navigatePage(index);

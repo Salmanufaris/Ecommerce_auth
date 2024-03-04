@@ -30,14 +30,14 @@ LinearGradient loginGradient() {
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
       colors: [
-        Colors.amber,
+        Colors.black,
         Color.fromARGB(255, 250, 214, 107),
       ]);
 }
 
 LinearGradient signupGradient() {
   return LinearGradient(colors: [
-    const Color.fromARGB(255, 33, 79, 243),
+    Colors.black,
     Color.fromARGB(255, 111, 184, 244),
   ]);
 }

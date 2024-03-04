@@ -45,10 +45,8 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 24, 30, 41),
-        ),
-        backgroundColor: Color.fromARGB(255, 24, 30, 41),
+        appBar: AppBar(backgroundColor: Colors.white),
+        backgroundColor: Colors.white,
         body: Stack(
           children: [
             ClipPath(
@@ -56,7 +54,7 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Container(
                   height: height * 1.5,
                   width: double.infinity,
-                  color: Color.fromARGB(255, 33, 41, 56)),
+                  color: Colors.white),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
@@ -66,14 +64,14 @@ class _SignUpPageState extends State<SignUpPage> {
                     spacingHeight(height * 0.015),
                     Icon(
                       Iconsax.user_add,
-                      color: Colors.white,
+                      color: Colors.black,
                       size: 45,
                     ),
                     spacingHeight(height * 0.020),
                     Text(
                       'Create New Account',
                       style: GoogleFonts.ubuntu(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 25,
                           fontWeight: FontWeight.w500),
                     ),
@@ -86,7 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'Create a strong password',
-                          style: TextStyle(color: Colors.grey, fontSize: 10),
+                          style: TextStyle(color: Colors.black, fontSize: 10),
                         )),
                     spacingHeight(height * 0.015),
                     textFormField(
@@ -125,7 +123,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         InkWell(
                           child: Text('Login',
                               style:
-                                  TextStyle(color: Colors.blue, fontSize: 16)),
+                                  TextStyle(color: Colors.black, fontSize: 16)),
                           onTap: () => widget.showLoginPage(),
                         )
                       ],

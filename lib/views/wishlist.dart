@@ -17,14 +17,13 @@ class WishlistPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final pro = Provider.of<Wishlist>(context);
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 24, 30, 41),
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text(
-            'Cart',
-            style: GoogleFonts.montserrat(color: Colors.white),
-          ),
-          backgroundColor: Color.fromARGB(255, 24, 30, 41),
-        ),
+            title: Text(
+              'Cart',
+              style: GoogleFonts.montserrat(color: Colors.black),
+            ),
+            backgroundColor: Colors.white),
         body: FutureBuilder<List<ProductModel>>(
             future: pro.getWishlistItems(auth.auth.currentUser!.uid),
             builder: (context, snapshot) {
@@ -44,7 +43,7 @@ class WishlistPage extends StatelessWidget {
                         height: 100,
                         width: double.maxFinite,
                         decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 27, 35, 50),
+                            color: Colors.grey[300],
                             borderRadius: BorderRadius.circular(15)),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -73,22 +72,22 @@ class WishlistPage extends StatelessWidget {
                                         Text(
                                           data.title!,
                                           style: GoogleFonts.montserrat(
-                                              color: Colors.white),
+                                              color: Colors.black),
                                         ),
                                         Text(
                                           data.category!,
                                           style: GoogleFonts.montserrat(
-                                              color: Colors.white),
+                                              color: Colors.black),
                                         ),
                                         Text(
                                           '${data.price!}',
                                           style: GoogleFonts.montserrat(
-                                              color: Colors.white),
+                                              color: Colors.black),
                                         ),
                                         Text(
                                           '${data.rating!}',
                                           style: GoogleFonts.montserrat(
-                                              color: Colors.white),
+                                              color: Colors.black),
                                         ),
                                       ],
                                     ),
@@ -101,8 +100,8 @@ class WishlistPage extends StatelessWidget {
                                         auth.auth.currentUser!.uid, data.id);
                                   },
                                   child: Icon(
-                                    Icons.delete_forever_outlined,
-                                    color: Color.fromARGB(255, 241, 52, 52),
+                                    Icons.delete,
+                                    color: Colors.red,
                                   ))
                             ],
                           ),

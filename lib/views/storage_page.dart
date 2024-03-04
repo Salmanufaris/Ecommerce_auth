@@ -9,12 +9,12 @@ class StorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 24, 30, 41),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 24, 30, 41),
+        backgroundColor: Colors.white,
         title: Text('Your Store',
             style: GoogleFonts.montserrat(
-                fontWeight: FontWeight.w500, color: Colors.white)),
+                fontWeight: FontWeight.w500, color: Colors.black)),
       ),
       body: CustomScrollView(
         slivers: [
@@ -31,23 +31,12 @@ class StorePage extends StatelessWidget {
                       style: GoogleFonts.montserrat(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
-                          color: Colors.white)),
+                          color: Colors.black)),
                 ],
               ),
             ),
           ),
           FurnitureItems(),
-          // SliverToBoxAdapter(
-          //   child: Padding(
-          //     padding: const EdgeInsets.only(left: 10.0),
-          //     child: Text('Sports',
-          //         style: GoogleFonts.montserrat(
-          //             fontSize: 20,
-          //             fontWeight: FontWeight.w500,
-          //             color: Colors.white)),
-          //   ),
-          // ),
-          // ShoeItems(),
         ],
       ),
     );

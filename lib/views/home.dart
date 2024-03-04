@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controller/homepage_provider.dart';
 import 'package:flutter_application_1/helpers/helpers.dart';
 import 'package:flutter_application_1/service/authentication_services.dart';
-import 'package:flutter_application_1/views/drawer.dart';
 import 'package:flutter_application_1/widgets/catoegry_list.dart';
 import 'package:flutter_application_1/widgets/furniture_grid.dart';
 import 'package:flutter_application_1/widgets/shoe.grid.dart';
@@ -40,10 +39,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 24, 30, 41),
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 24, 30, 41),
-      ),
+      backgroundColor: Colors.white,
+      appBar: AppBar(backgroundColor: Colors.white),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -57,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                           style: GoogleFonts.montserrat(
                               fontSize: 17,
                               fontWeight: FontWeight.w500,
-                              color: Colors.white)),
+                              color: Colors.black)),
                       Image.asset(
                         'assets/handwave.jpg',
                         height: 20,
@@ -76,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                           style: GoogleFonts.montserrat(
                               fontSize: 20,
                               fontWeight: FontWeight.w500,
-                              color: Colors.white)),
+                              color: Colors.black)),
                       Icon(
                         Icons.arrow_right,
                         color: Colors.green,
@@ -86,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                           style: GoogleFonts.montserrat(
                               fontSize: 20,
                               fontWeight: FontWeight.w500,
-                              color: Colors.amber)),
+                              color: Colors.black)),
                     ],
                   ),
                 ],
@@ -143,20 +140,20 @@ class _HomePageState extends State<HomePage> {
                           style: GoogleFonts.montserrat(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
-                              color: Colors.white)),
+                              color: Colors.black)),
                       spacingWidth(10),
                       Text('Products',
                           style: GoogleFonts.montserrat(
                               fontSize: 17,
                               fontWeight: FontWeight.w500,
-                              color: Colors.amber)),
+                              color: Colors.black)),
                     ],
                   ),
                   Text('Sports',
                       style: GoogleFonts.montserrat(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
-                          color: Colors.white)),
+                          color: Colors.black)),
                 ],
               ),
             ),
@@ -169,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                   style: GoogleFonts.montserrat(
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
-                      color: Colors.white)),
+                      color: Colors.black)),
             ),
           ),
           FurnitureItems(),

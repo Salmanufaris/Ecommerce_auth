@@ -34,7 +34,7 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                 alignment: Alignment.center,
                 child: Container(
                   child: Lottie.asset(
-                    'assets/otp1.jpg',
+                    'assets/otp.jpg',
                     width: 300,
                     height: 300,
                     fit: BoxFit.cover,
